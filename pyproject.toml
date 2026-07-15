@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "logsentry"
+version = "1.0.0"
+description = "Turns Windows and Linux security logs into a short daily digest with correlated incidents."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Kaleb Cash-Wade" }]
+keywords = ["security", "blue-team", "detection", "logs", "siem", "mitre-attack"]
+dependencies = []
+
+[project.scripts]
+logsentry = "logsentry.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "ruff>=0.4"]
+
+[tool.setuptools.packages.find]
+include = ["logsentry*"]
+
+[tool.setuptools.package-data]
+logsentry = ["../demo/*.csv", "../demo/*.log"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+# The HTML digest embeds a CSS block as a template string. Those lines are long
+# by nature and wrapping them would hurt readability.
+"logsentry/digest.py" = ["E501"]
+# Tests and the demo generator carry real log lines as fixtures. Log lines are
+# long and must stay intact to be realistic.
+"tests/*" = ["E501"]
+"demo/*" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

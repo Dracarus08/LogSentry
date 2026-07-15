@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local digest output
+digest*.html
+digest*.txt
+
+# OS noise
+Thumbs.db
+.DS_Store
