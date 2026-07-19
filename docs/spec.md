@@ -52,4 +52,4 @@ Detections map to MITRE ATT&CK: T1110 Brute Force, T1098 Account Manipulation, T
 1. `logsentry --demo` writes an HTML digest on a clean machine in seconds.
 2. Every detection covered by tests against the synthetic corpus.
 3. Real screenshots of the digest captured from a real run.
-4. README to standard. Defense pack written. gitleaks clean.
+4. README to standard. gitleaks clean.

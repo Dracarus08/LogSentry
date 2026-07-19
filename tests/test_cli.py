@@ -32,8 +32,10 @@ def test_render_text_and_html():
     html = render_html(digest)
     assert "<html" in html.lower()
     assert "Incidents" in html
-    # No unescaped raw ampersands from ATT&CK in the body break the markup.
-    assert "ATT&amp;CK" in html
+    # ATT&CK technique ids render in the incident detail.
+    assert "T1110" in html
+    # Ampersands are entity-encoded, so no naked ampersand breaks the markup.
+    assert " & " not in html
 
 
 def test_cli_writes_html(tmp_path, capsys):
